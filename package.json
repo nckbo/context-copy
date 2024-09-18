@@ -1,13 +1,14 @@
 {
-  "name": "context-copy",
-  "displayName": "Context Copy",
-  "description": "Context Copy simplifies the process of analyzing and managing code dependencies. With just a few clicks, you can generate a visual dependency tree of your codebase, toggle dependencies to include or exclude them, and effortlessly copy detailed dependency information to your clipboard. Streamline your development workflow and maintain a clear overview of your project's structure with Context Copy.",
+  "name": "contextual-copy",
+  "displayName": "Contextual Copy",
+  "description": "Contextual Copy simplifies the process of analyzing and managing code dependencies. With just a few clicks, you can generate a visual dependency tree of your codebase, toggle dependencies to include or exclude them, and effortlessly copy detailed dependency information to your clipboard. Streamline your development workflow and maintain a clear overview of your project's structure with Contextual Copy.",
+  "icon": "resources/logo.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/nckbo/context-copy.git"
   },
   "publisher": "nick-boveri",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -34,9 +35,9 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Context Copy Configuration",
+      "title": "Contextual Copy Configuration",
       "properties": {
-        "contextCopy.pythonPath": {
+        "contextualCopy.pythonPath": {
           "type": "string",
           "default": "python",
           "description": "Path to the Python interpreter to use for parsing imports. Defaults to 'python' from the system PATH."
@@ -47,12 +48,12 @@
       {
         "command": "extension.copyWorkspaceStructure",
         "title": "Copy Workspace Structure",
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.buildDependencyTree",
         "title": "Build Dependency Tree",
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.toggleDependencyItem",
@@ -61,7 +62,7 @@
           "light": "./resources/light/check.png",
           "dark": "./resources/dark/check.png"
         },
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.toggleChildren",  
@@ -70,7 +71,7 @@
           "light": "./resources/light/children-toggle.png",
           "dark": "./resources/dark/children-toggle.png"
         },
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.copyDependencyInfo",
@@ -79,7 +80,7 @@
           "light": "./resources/light/copy.png",
           "dark": "./resources/dark/copy.png"
         },
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.goToDependencyItem",
@@ -88,7 +89,7 @@
           "light": "./resources/light/go-to-code.png",
           "dark": "./resources/dark/go-to-code.png"
         },
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.printRelevantImports",
@@ -97,12 +98,12 @@
           "light": "./resources/light/checkbox-unchecked.png",
           "dark": "./resources/dark/checkbox-unchecked.png"
         },
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.toggleFileItem",
         "title": "Toggle File Selection",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/check.png",
           "dark": "./resources/dark/check.png"
@@ -111,7 +112,7 @@
       {
         "command": "extension.toggleFileChildren",
         "title": "Toggle Children Selection",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/children-toggle.png",
           "dark": "./resources/dark/children-toggle.png"
@@ -120,7 +121,7 @@
       {
         "command": "extension.copySelectedFiles",
         "title": "Copy Selected Files",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/copy.png",
           "dark": "./resources/dark/copy.png"
@@ -129,7 +130,7 @@
       {
         "command": "extension.toggleFileDependencyItem",
         "title": "Toggle File Dependency Item",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/check.png",
           "dark": "./resources/dark/check.png"
@@ -138,7 +139,7 @@
       {
         "command": "extension.toggleFileDependencyChildren",
         "title": "Toggle File Dependency Children",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/children-toggle.png",
           "dark": "./resources/dark/children-toggle.png"
@@ -147,7 +148,7 @@
       {
         "command": "extension.copyFileDependencyInfo",
         "title": "Copy File Dependency Info",
-        "category": "Context Copy",
+        "category": "Contextual Copy",
         "icon": {
           "light": "./resources/light/copy.png",
           "dark": "./resources/dark/copy.png"
@@ -156,12 +157,12 @@
       {
         "command": "extension.showFileDependencyTreeView",
         "title": "Show File Dependency Tree",
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       },
       {
         "command": "extension.buildFileDependencyTree",
         "title": "Build File Dependency Tree",
-        "category": "Context Copy"
+        "category": "Contextual Copy"
       }
     ],
     "menus": {
@@ -228,14 +229,14 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "contextCopy",
-          "title": "Context Copy",
+          "id": "contextualCopy",
+          "title": "Contextual Copy",
           "icon": "resources/context-copy.png"
         }
       ]
     },
     "views": {
-      "contextCopy": [
+      "contextualCopy": [
         {
           "id": "dependencyTreeView",
           "name": "Dependency Tree"
