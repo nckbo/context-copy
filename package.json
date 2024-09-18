@@ -1,0 +1,292 @@
+{
+  "name": "context-copy",
+  "displayName": "Context Copy",
+  "description": "Context Copy simplifies the process of analyzing and managing code dependencies. With just a few clicks, you can generate a visual dependency tree of your codebase, toggle dependencies to include or exclude them, and effortlessly copy detailed dependency information to your clipboard. Streamline your development workflow and maintain a clear overview of your project's structure with Context Copy.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nckbo/context-copy.git"
+  },
+  "publisher": "nick-boveri",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:extension.copyWorkspaceStructure",
+    "onCommand:extension.buildDependencyTree",
+    "onCommand:extension.toggleDependencyItem",
+    "onCommand:extension.toggleChildren",
+    "onCommand:extension.copyDependencyInfo",
+    "onCommand:extension.printRelevantImports",
+    "onCommand:extension.toggleFileItem",
+    "onCommand:extension.toggleFileChildren",
+    "onCommand:extension.copySelectedFiles",
+    "onCommand:extension.toggleFileDependencyItem",
+    "onCommand:extension.toggleFileDependencyChildren",
+    "onCommand:extension.copyFileDependencyInfo",
+    "onCommand:extension.buildFileDependencyTree",
+    "onCommand:extension.showFileDependencyTreeView"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Context Copy Configuration",
+      "properties": {
+        "contextCopy.pythonPath": {
+          "type": "string",
+          "default": "python",
+          "description": "Path to the Python interpreter to use for parsing imports. Defaults to 'python' from the system PATH."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "extension.copyWorkspaceStructure",
+        "title": "Copy Workspace Structure",
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.buildDependencyTree",
+        "title": "Build Dependency Tree",
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.toggleDependencyItem",
+        "title": "Toggle Dependency Item",
+        "icon": {
+          "light": "./resources/light/check.png",
+          "dark": "./resources/dark/check.png"
+        },
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.toggleChildren",  
+        "title": "Toggle Children",
+        "icon": {
+          "light": "./resources/light/children-toggle.png",
+          "dark": "./resources/dark/children-toggle.png"
+        },
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.copyDependencyInfo",
+        "title": "Copy Dependency Info",
+        "icon": {
+          "light": "./resources/light/copy.png",
+          "dark": "./resources/dark/copy.png"
+        },
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.goToDependencyItem",
+        "title": "Go to Dependency",
+        "icon": {
+          "light": "./resources/light/go-to-code.png",
+          "dark": "./resources/dark/go-to-code.png"
+        },
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.printRelevantImports",
+        "title": "Print Relevant Imports",
+        "icon": {
+          "light": "./resources/light/checkbox-unchecked.png",
+          "dark": "./resources/dark/checkbox-unchecked.png"
+        },
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.toggleFileItem",
+        "title": "Toggle File Selection",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/check.png",
+          "dark": "./resources/dark/check.png"
+        }
+      },
+      {
+        "command": "extension.toggleFileChildren",
+        "title": "Toggle Children Selection",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/children-toggle.png",
+          "dark": "./resources/dark/children-toggle.png"
+        }
+      },
+      {
+        "command": "extension.copySelectedFiles",
+        "title": "Copy Selected Files",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/copy.png",
+          "dark": "./resources/dark/copy.png"
+        }
+      },
+      {
+        "command": "extension.toggleFileDependencyItem",
+        "title": "Toggle File Dependency Item",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/check.png",
+          "dark": "./resources/dark/check.png"
+        }
+      },
+      {
+        "command": "extension.toggleFileDependencyChildren",
+        "title": "Toggle File Dependency Children",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/children-toggle.png",
+          "dark": "./resources/dark/children-toggle.png"
+        }
+      },
+      {
+        "command": "extension.copyFileDependencyInfo",
+        "title": "Copy File Dependency Info",
+        "category": "Context Copy",
+        "icon": {
+          "light": "./resources/light/copy.png",
+          "dark": "./resources/dark/copy.png"
+        }
+      },
+      {
+        "command": "extension.showFileDependencyTreeView",
+        "title": "Show File Dependency Tree",
+        "category": "Context Copy"
+      },
+      {
+        "command": "extension.buildFileDependencyTree",
+        "title": "Build File Dependency Tree",
+        "category": "Context Copy"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.buildDependencyTree",
+          "when": "editorHasDefinitionProvider && editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.copyWorkspaceStructure",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "extension.copyDependencyInfo",
+          "when": "viewItem == dependencyItem",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleDependencyItem",
+          "when": "viewItem == dependencyItem",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleChildren",
+          "when": "viewItem == dependencyItem",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleFileItem",
+          "when": "view == fileTreeView",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleFileChildren",
+          "when": "view == fileTreeView",
+          "group": "inline"
+        },
+        {
+          "command": "extension.copySelectedFiles",
+          "when": "view == fileTreeView",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleFileDependencyItem",
+          "when": "view == fileDependencyTreeView",
+          "group": "inline"
+        },
+        {
+          "command": "extension.toggleFileDependencyChildren",
+          "when": "view == fileDependencyTreeView",
+          "group": "inline"
+        },
+        {
+          "command": "extension.copyFileDependencyInfo",
+          "when": "view == fileDependencyTreeView",
+          "group": "inline"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "contextCopy",
+          "title": "Context Copy",
+          "icon": "resources/context-copy.png"
+        }
+      ]
+    },
+    "views": {
+      "contextCopy": [
+        {
+          "id": "dependencyTreeView",
+          "name": "Dependency Tree"
+        },
+        {
+          "id": "fileTreeView",
+          "name": "File Structure"
+        },
+        {
+          "id": "fileDependencyTreeView",
+          "name": "File Dependency Tree"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.buildDependencyTree",
+        "key": "ctrl+alt+z",
+        "mac": "cmd+alt+z",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "esbuild": "^0.23.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "files": [
+    "scripts/parse_imports.py"
+  ]
+}
