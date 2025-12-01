@@ -2,11 +2,6 @@
 
 Contextual Copy simplifies the process of analyzing and managing code dependencies in your Python projects. With just a few clicks, you can generate a visual dependency tree of your codebase, toggle dependencies to include or exclude them, and effortlessly copy detailed dependency information to your clipboard. This makes it easy to provide contextual information to Large Language Models (LLMs) for better understanding and assistance with your code.
 
-```mermaid
-graph TD
-    A --> B
-```
-
 
 ## Features
 
